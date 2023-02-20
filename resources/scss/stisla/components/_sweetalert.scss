@@ -1,0 +1,31 @@
+.swal-button {
+  border-radius: 3px;
+  font-size: 16px;
+  &:focus {
+    box-shadow: none;
+  }
+  &.swal-button--confirm {
+    @include button-shadow(primary);
+    background-color: color(primary);
+    &:focus {
+      opacity: .8;
+    }
+  }
+  &.swal-button--danger {
+    @include button-shadow(danger);
+    background-color: color(danger);
+    &:focus {
+      opacity: .8;
+    }
+  }
+}
+
+.swal-footer {
+  text-align: center;
+}
+
+.swal-text {
+  text-align: center;
+  line-height: 24px;
+  font-weight: 500;
+}

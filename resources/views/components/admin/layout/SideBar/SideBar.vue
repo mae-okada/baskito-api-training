@@ -12,7 +12,6 @@
         /></Link>
       </div>
       <ul class="sidebar-menu">
-        <SideBarHeader>Example</SideBarHeader>
         <SideBarLink
           icon="fas fa-fire"
           :href="$route('admin.dashboard')"
@@ -20,6 +19,14 @@
         >
           Dashboard
         </SideBarLink>
+        <SideBarLink
+          icon="fas fa-users"
+          :href="$route('admin.user.index')"
+          :active="routeIs('admin.user.*')"
+        >
+          Manage Users
+        </SideBarLink>
+        <SideBarHeader>Example</SideBarHeader>
         <SideBarDropdown
           title="Other Page"
           icon="fas fa-columns"

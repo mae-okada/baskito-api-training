@@ -12,9 +12,12 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
       <div class="dropdown-title">Logged in 5 min ago</div>
-      <a href="features-profile.html" class="dropdown-item has-icon">
+      <Link :href="$route('admin.profile.show')" class="dropdown-item has-icon">
         <i class="far fa-user"></i> Profile
-      </a>
+      </Link>
+      <Link :href="$route('admin.user.index')" class="dropdown-item has-icon">
+        <i class="fas fa-users"></i> Manage Users
+      </Link>
       <div class="dropdown-divider"></div>
       <a
         href="#"
@@ -29,7 +32,7 @@
 
 <script setup lang="ts">
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
-import { useForm, usePage } from "@inertiajs/vue3";
+import { Link, useForm, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const { route } = useRoute();
