@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
 
         $user = $account->users()->create([
             'first_name' => 'Timedoor',
-            'last_name' => 'Indonesia',
-            'email' => 'demo@timedoor.net',
-            'password' => 'demo123',
-            'owner' => true,
+            'last_name'  => 'Indonesia',
+            'email'      => 'demo@timedoor.net',
+            'password'   => 'demo123',
+            'owner'      => true,
         ]);
 
         User::factory()->count(100)->create([

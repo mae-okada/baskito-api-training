@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('login-2', function () {
     return inertia('admin.auth.login-2');
 })->name('login-2');
@@ -32,4 +31,4 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-require_once __DIR__ . '/component.php';
+require_once __DIR__.'/component.php';

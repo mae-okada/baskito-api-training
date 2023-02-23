@@ -20,7 +20,7 @@ class ProfileController extends Controller
     public function update(UpdateProfileRequest $request): RedirectResponse
     {
         auth_user()?->update($request->only([
-            'first_name', 'last_name', 'email', 'owner'
+            'first_name', 'last_name', 'email', 'owner',
         ]));
 
         return back()->with('message', 'Profile updated.');

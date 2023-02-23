@@ -24,11 +24,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'max:25'],
-            'last_name'  => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email:filter', 'max:50', 'unique:users,email'],
-            'owner' => ['required', 'boolean'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name'            => ['required', 'string', 'max:25'],
+            'last_name'             => ['required', 'string', 'max:25'],
+            'email'                 => ['required', 'string', 'email:filter', 'max:50', 'unique:users,email'],
+            'owner'                 => ['required', 'boolean'],
+            'password'              => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['required', 'string', 'min:8'],
         ];
     }

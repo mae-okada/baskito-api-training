@@ -26,12 +26,12 @@ class UserResource extends JsonResource
         $user = $this->resource;
 
         return [
-            'id'    => $user->id,
+            'id'         => $user->id,
             'first_name' => $user->first_name,
             'last_name'  => $user->last_name,
-            'name'  => $user->name,
-            'email' => $user->email,
-            'owner' => $user->owner,
+            'name'       => $user->name,
+            'email'      => $user->email,
+            'owner'      => $user->owner,
             'created_at' => $user->created_at,
         ];
     }

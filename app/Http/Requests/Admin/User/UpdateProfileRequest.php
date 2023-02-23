@@ -26,8 +26,8 @@ class UpdateProfileRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:25'],
             'last_name'  => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email:filter', 'max:50', 'unique:users,email,' . auth_user()?->id],
-            'owner' => ['required', 'boolean'],
+            'email'      => ['required', 'string', 'email:filter', 'max:50', 'unique:users,email,'.auth_user()?->id],
+            'owner'      => ['required', 'boolean'],
         ];
     }
 }

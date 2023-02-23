@@ -55,7 +55,6 @@ class Handler extends ExceptionHandler
      * Render a default exception response if any.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $e
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function renderExceptionResponse($request, Throwable $e)
@@ -76,7 +75,6 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \Throwable|\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface  $e
      * @return \Symfony\Component\HttpFoundation\Response|null
      */

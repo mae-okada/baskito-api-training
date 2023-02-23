@@ -18,7 +18,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
-    function index(Request $request): Response
+    public function index(Request $request): Response
     {
         $user  = auth_user();
         $users = collect();
@@ -32,7 +32,7 @@ class UserController extends Controller
         }
 
         return Inertia::render('admin.user.index', [
-            'users' => UserResource::collection($users),
+            'users'  => UserResource::collection($users),
             'filter' => $request->query('filter', []),
         ]);
     }

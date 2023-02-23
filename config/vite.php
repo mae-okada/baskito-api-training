@@ -13,7 +13,7 @@ return [
     'configs' => [
         'default' => [
             'entrypoints' => [
-                'ssr' => 'resources/scripts/ssr.ts',
+                'ssr'   => 'resources/scripts/ssr.ts',
                 'paths' => [
                     'resources/scripts/main.ts',
                     'resources/js/app.js',
@@ -21,13 +21,13 @@ return [
                 'ignore' => '/\\.(d\\.ts|json)$/',
             ],
             'dev_server' => [
-                'enabled' => true,
-                'url' => env('DEV_SERVER_URL', 'http://localhost:5173'),
+                'enabled'                    => true,
+                'url'                        => env('DEV_SERVER_URL', 'http://localhost:5173'),
                 'ping_before_using_manifest' => true,
-                'ping_url' => null,
-                'ping_timeout' => 1,
-                'key' => env('DEV_SERVER_KEY'),
-                'cert' => env('DEV_SERVER_CERT'),
+                'ping_url'                   => null,
+                'ping_timeout'               => 1,
+                'key'                        => env('DEV_SERVER_KEY'),
+                'cert'                       => env('DEV_SERVER_CERT'),
             ],
             'build_path' => 'build',
         ],
@@ -43,7 +43,7 @@ return [
     | https://laravel-vite.dev/configuration/laravel-package.html#aliases
     */
     'aliases' => [
-        '@' => 'resources',
+        '@'           => 'resources',
         '@components' => 'resources/views/components',
     ],
 
@@ -59,7 +59,7 @@ return [
     'commands' => [
         'artisan' => [
             'vite:tsconfig',
-            'ziggy:generate' => ["resources/scripts/utils/ziggy/index.ts"]
+            'ziggy:generate' => ['resources/scripts/utils/ziggy/index.ts'],
             // 'typescript:generate'
         ],
         'shell' => [
@@ -99,8 +99,8 @@ return [
     | https://laravel-vite.dev/configuration/laravel-package.html#interfaces
     */
     'interfaces' => [
-        'heartbeat_checker' => Innocenzi\Vite\HeartbeatCheckers\HttpHeartbeatChecker::class,
-        'tag_generator' => Innocenzi\Vite\TagGenerators\CallbackTagGenerator::class,
+        'heartbeat_checker'  => Innocenzi\Vite\HeartbeatCheckers\HttpHeartbeatChecker::class,
+        'tag_generator'      => Innocenzi\Vite\TagGenerators\CallbackTagGenerator::class,
         'entrypoints_finder' => Innocenzi\Vite\EntrypointsFinder\DefaultEntrypointsFinder::class,
     ],
 

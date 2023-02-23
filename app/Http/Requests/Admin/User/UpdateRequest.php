@@ -25,11 +25,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'max:25'],
-            'last_name'  => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email:filter', 'max:50', Rule::unique('users', 'email')->ignore($this->route('user'))],
-            'owner' => ['required', 'boolean'],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'first_name'            => ['required', 'string', 'max:25'],
+            'last_name'             => ['required', 'string', 'max:25'],
+            'email'                 => ['required', 'string', 'email:filter', 'max:50', Rule::unique('users', 'email')->ignore($this->route('user'))],
+            'owner'                 => ['required', 'boolean'],
+            'password'              => ['nullable', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['nullable', 'required_with:password', 'string', 'min:8'],
         ];
     }
