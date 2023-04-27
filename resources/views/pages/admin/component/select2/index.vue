@@ -14,13 +14,13 @@
           <div class="card-body">
             <div class="form-group">
               <label>Default select</label>
-              <Select2 v-model="selectDefault" :data-placeholder="'This is placeholder'">
+              <BKSelect v-model="selectDefault" :data-placeholder="'This is placeholder'">
                 <option v-for="option in options" :key="option.id" :value="option.id">{{ option.text }}</option>
-              </Select2>
+              </BKSelect>
             </div>
             <div class="form-group">
               <label>Select using option property</label>
-              <Select2
+              <BKSelect
                 :options="{
                   data: options,
                   placeholder: 'This is placeholder',
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
               <label>Select multiple</label>
-              <Select2
+              <BKSelect
                 :options="{
                   data: options,
                   placeholder: 'This is placeholder',
@@ -49,7 +49,6 @@
 import PageDescription from "@components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@components/admin/layout/Page/PageTitle.vue";
-import Select2 from "@components/admin/ui/Select/Select2.vue";
 import { Head } from "@inertiajs/vue3";
 import { ref, watch } from 'vue';
 

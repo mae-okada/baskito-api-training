@@ -79,7 +79,7 @@
   </PageSection>
 
   <Teleport to="body">
-    <BaseModal
+    <BKModal
       id="defaultModal"
       title="Default Modal"
       @submit="submit"
@@ -89,31 +89,31 @@
       @hidden="hidden"
     >
       <p>Modal body goes here.</p>
-    </BaseModal>
+    </BKModal>
 
-    <BaseModal
+    <BKModal
       id="centeredModal"
       title="Centered Modal"
       :is-center="true"
       @submit="submit"
     >
       <p>Modal body goes here.</p>
-    </BaseModal>
+    </BKModal>
 
-    <BaseModal
+    <BKModal
       id="withoutAnimationModal"
       title="Without Animation Modal"
       :with-fade="false"
       @submit="submit"
     >
       <p>Modal body goes here.</p>
-    </BaseModal>
+    </BKModal>
 
-    <BaseModal id="sizedModal" title="Sized Modal" size="lg" @submit="submit">
+    <BKModal id="sizedModal" title="Sized Modal" size="lg" @submit="submit">
       <p>Modal body goes here.</p>
-    </BaseModal>
+    </BKModal>
 
-    <BaseModal
+    <BKModal
       id="customNamingModal"
       title="Custom Naming Modal"
       submit-text="Save"
@@ -121,9 +121,9 @@
       @submit="submit"
     >
       <p>Modal body goes here.</p>
-    </BaseModal>
+    </BKModal>
 
-    <BaseModal id="customTemplateModal">
+    <BKModal id="customTemplateModal">
       <template #header>
         <b><i>Custom Template</i></b>
         <button
@@ -146,7 +146,7 @@
         </button>
         <button type="button" class="btn btn-danger">Delete</button>
       </template>
-    </BaseModal>
+    </BKModal>
   </Teleport>
 </template>
 
@@ -154,7 +154,6 @@
 import PageDescription from "@components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@components/admin/layout/Page/PageTitle.vue";
-import BaseModal from "@components/admin/ui/Modal/BaseModal.vue";
 import { Head } from "@inertiajs/vue3";
 
 function submit() {

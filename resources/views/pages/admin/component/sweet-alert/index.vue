@@ -33,12 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import { useSweetAlert } from "@/scripts/composables/ui/alert/useSweetAlert";
+import { useSweetAlert } from '@timedoor/baskito-ui'
 import PageDescription from "@/views/components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@/views/components/admin/layout/Page/PageTitle.vue";
 import { Head } from "@inertiajs/vue3";
-import { BKButton } from '@timedoor/baskito-ui';
 
 const {
   successAlert,

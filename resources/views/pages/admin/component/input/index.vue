@@ -13,7 +13,7 @@
           <div class="card-body">
             <div class="form-group">
               <p class="mb-2">Label Name</p>
-              <InputBase v-model="name" type="text"></InputBase>
+              <BKInput v-model="name" type="text"></BKInput>
             </div>
           </div>
         </div>
@@ -26,7 +26,6 @@
 import PageDescription from "@components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@components/admin/layout/Page/PageTitle.vue";
-import InputBase from "@components/admin/ui/Input/InputBase.vue";
 
 import { Head } from "@inertiajs/vue3";
 import { ref } from "vue";
