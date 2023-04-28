@@ -26,3 +26,9 @@ declare module '@vue/runtime-core' {
     $route: ZiggyRoute;
   }
 }
+
+declare global {
+  interface Window {
+    Ziggy?: Config;
+  }
+}

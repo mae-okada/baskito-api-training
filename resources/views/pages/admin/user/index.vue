@@ -10,31 +10,31 @@
             <div class="card-header-form">
               <form method="get" @submit.prevent="search">
                 <div class="input-group">
-                  <InputBase
+                  <BKInput
                     v-model="form.filter.search"
                     name="search"
                     placeholder="Search"
                     class="form-control"
                   />
                   <div class="input-group-btn">
-                    <BaseButton type="submit" variant="primary">
+                    <BKButton type="submit" variant="primary">
                       <i class="fas fa-search"></i>
-                    </BaseButton>
+                    </BKButton>
                   </div>
                 </div>
               </form>
             </div>
-            <LinkButton
+            <BKLinkButton
               class="ml-2"
               variant="primary"
               :href="$route('admin.user.create')"
             >
               Add New User
-            </LinkButton>
+            </BKLinkButton>
           </div>
           <div class="card-body">
             <table class="table table-striped">
-              <thead>
+              <Head>
                 <tr>
                   <th>No</th>
                   <th>Name</th>
@@ -43,7 +43,7 @@
                   <th>Register At</th>
                   <th>Action</th>
                 </tr>
-              </thead>
+              </Head>
               <tbody>
                 <tr v-if="users.data.length === 0">
                   <td colspan="6" class="text-center">No data available</td>
@@ -65,22 +65,22 @@
                   </td>
                   <td>{{ dayjs(user.created_at).format("MMM DD, YYYY") }}</td>
                   <td class="buttons">
-                    <LinkButton
+                    <BKLinkButton
                       :href="$route('admin.user.edit', user.id)"
                       variant="warning"
                     >
                       Edit
-                    </LinkButton>
-                    <BaseButton variant="danger" @click="deleteUser(user)">
+                    </BKLinkButton>
+                    <BKButton variant="danger" @click="deleteUser(user)">
                       Delete
-                    </BaseButton>
+                    </BKButton>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="card-footer text-right">
-            <BasePagination class="d-inline-block" :links="users.meta.links" />
+            <BKPagination class="d-inline-block" :links="users.meta.links" />
           </div>
         </div>
       </div>
@@ -89,17 +89,12 @@
 </template>
 
 <script setup lang="ts">
-import { useSweetAlert } from "@/scripts/composables/ui/alert/useSweetAlert";
+import { BKButton, BKInput, BKLinkButton, BKPagination, useSweetAlert } from "@timedoor/baskito-ui";
 import { useAxios } from "@/scripts/composables/useAxios";
-import type { ResourceCollection } from "@/scripts/types/ui";
+import type { BKResourceCollection } from "@timedoor/baskito-ui";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
-import BaseButton from "@/views/components/admin/ui/Button/BaseButton.vue";
-import LinkButton from "@/views/components/admin/ui/Button/LinkButton.vue";
-import InputBase from "@/views/components/admin/ui/Input/InputBase.vue";
-import BasePagination from "@/views/components/admin/ui/Pagination/BasePagination.vue";
-import { Inertia } from "@inertiajs/inertia";
-import { Head, useForm } from "@inertiajs/inertia-vue3";
+import { Head, router, useForm } from "@inertiajs/vue3";
 import { AxiosError } from "axios";
 import dayjs from "dayjs";
 
@@ -114,7 +109,7 @@ type User = {
 };
 
 const props = defineProps<{
-  users: ResourceCollection<User>;
+  users: BKResourceCollection<User>;
   filter: {
     search?: string;
   };
@@ -161,7 +156,7 @@ const deleteUser = async (user: User) => {
           icon: "success",
         });
 
-        Inertia.reload();
+        router.reload();
       },
       onError: (error) => {
         let text = `Failed to delete user ${user.name}.`;

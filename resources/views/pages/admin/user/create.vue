@@ -14,7 +14,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <InputBase
+                    <BKInput
                       id="firstName"
                       v-model="form.first_name"
                       name="first_name"
@@ -26,7 +26,7 @@
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <InputBase
+                    <BKInput
                       id="email"
                       v-model="form.email"
                       type="email"
@@ -39,7 +39,7 @@
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <InputBase
+                    <BKInput
                       id="password"
                       v-model="form.password"
                       type="password"
@@ -54,7 +54,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <InputBase
+                    <BKInput
                       id="lastName"
                       v-model="form.last_name"
                       name="last_name"
@@ -81,7 +81,7 @@
                   </div>
                   <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <InputBase
+                    <BKInput
                       id="password_confirmation"
                       v-model="form.password_confirmation"
                       type="password"
@@ -97,7 +97,7 @@
             </form>
           </div>
           <div class="card-footer text-right">
-            <BaseButton
+            <BKButton
               :variant="form.isDirty ? 'danger' : 'secondary'"
               class="mr-3"
               :disabled="form.processing"
@@ -105,8 +105,8 @@
               @click="form.reset()"
             >
               Cancel
-            </BaseButton>
-            <BaseButton
+            </BKButton>
+            <BKButton
               variant="primary"
               :disabled="!form.isDirty"
               :loading="form.processing"
@@ -115,7 +115,7 @@
               @click="submit"
             >
               Create
-            </BaseButton>
+            </BKButton>
           </div>
         </div>
       </div>
@@ -124,15 +124,13 @@
 </template>
 
 <script setup lang="ts">
-import { useSweetAlert } from "@/scripts/composables/ui/alert/useSweetAlert";
+import { BKButton, BKInput, useSweetAlert } from "@timedoor/baskito-ui";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
 import PageDescription from "@/views/components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@/views/components/admin/layout/Page/PageTitle.vue";
-import BaseButton from "@/views/components/admin/ui/Button/BaseButton.vue";
 import ValidationFeedback from "@/views/components/admin/ui/Form/ValidationFeedback.vue";
-import InputBase from "@components/admin/ui/Input/InputBase.vue";
-import { Head, useForm } from "@inertiajs/inertia-vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 
 const form = useForm({
   first_name: "",
