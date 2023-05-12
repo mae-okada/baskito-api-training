@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserModalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login-2', function () {
@@ -28,6 +29,10 @@ Route::middleware('auth')->group(function () {
         Route::get('{user}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('{user}', [UserController::class, 'update'])->name('update');
         Route::delete('{user}', [UserController::class, 'destroy'])->name('destroy');
+
+        Route::prefix('modal')->as('modal.')->group(function () {
+            Route::get('/', [UserModalController::class, 'index'])->name('index');
+        });
     });
 });
 

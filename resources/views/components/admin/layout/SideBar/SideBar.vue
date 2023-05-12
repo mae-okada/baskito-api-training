@@ -22,9 +22,16 @@
         <SideBarLink
           icon="fas fa-users"
           :href="$route('admin.user.index')"
-          :active="routeIs('admin.user.*')"
+          :active="routeIs('admin.user.*') && !routeIs('admin.user.modal.*')"
         >
           Manage Users
+        </SideBarLink>
+        <SideBarLink
+          icon="fas fa-users"
+          :href="$route('admin.user.modal.index')"
+          :active="routeIs('admin.user.modal.*')"
+        >
+          Users with Modal
         </SideBarLink>
         <SideBarHeader>Example</SideBarHeader>
         <SideBarDropdown

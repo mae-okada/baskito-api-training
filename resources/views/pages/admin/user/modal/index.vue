@@ -1,7 +1,7 @@
 <template layout="admin">
   <Head title="Users Page" />
 
-  <PageSection header="Manage Users">
+  <PageSection header="Users With Modal">
     <div class="row">
       <div class="col-12">
         <div class="card">
@@ -24,13 +24,14 @@
                 </div>
               </form>
             </div>
-            <BKLinkButton
+            <BKButton
               class="ml-2"
               color="primary"
-              :href="$route('admin.user.create')"
+              data-target="#create-user-modal"
+              data-toggle="modal"
             >
               Add New User
-            </BKLinkButton>
+            </BKButton>
           </div>
           <div class="card-body">
             <table class="table table-striped">
@@ -65,12 +66,14 @@
                   </td>
                   <td>{{ dayjs(user.created_at).format("MMM DD, YYYY") }}</td>
                   <td class="buttons">
-                    <BKLinkButton
-                      :href="$route('admin.user.edit', user.id)"
+                    <BKButton
                       color="warning"
+                      data-target="#edit-user-modal"
+                      data-toggle="modal"
+                      @click="editUser(user)"
                     >
                       Edit
-                    </BKLinkButton>
+                    </BKButton>
                     <BKButton color="danger" @click="deleteUser(user)">
                       Delete
                     </BKButton>
@@ -86,33 +89,31 @@
       </div>
     </div>
   </PageSection>
+
+  <Teleport to="body">
+    <CreateModal />
+    <EditModal ref="editModal" />
+  </Teleport>
 </template>
 
 <script setup lang="ts">
 import { useAxios } from "@/scripts/composables/useAxios";
+import { User } from "@/scripts/types/admin/user";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
+import CreateModal from "@/views/components/admin/pages/user/modal/CreateModal.vue";
+import EditModal from "@/views/components/admin/pages/user/modal/EditModal.vue";
 import { Head, router, useForm } from "@inertiajs/vue3";
 import type { BKResourceCollection } from "@timedoor/baskito-ui";
 import {
   BKButton,
   BKInput,
-  BKLinkButton,
   BKPagination,
   useSweetAlert,
 } from "@timedoor/baskito-ui";
 import { AxiosError } from "axios";
 import dayjs from "dayjs";
-
-type User = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  name: string;
-  email: string;
-  owner: boolean;
-  created_at: string;
-};
+import { ref } from "vue";
 
 const props = defineProps<{
   users: BKResourceCollection<User>;
@@ -120,6 +121,8 @@ const props = defineProps<{
     search?: string;
   };
 }>();
+
+let editModal = ref<InstanceType<typeof EditModal>>();
 
 const form = useForm({
   filter: {
@@ -135,6 +138,10 @@ const search = () => {
     preserveState: true,
     preserveScroll: true,
   });
+};
+
+const editUser = (user: User) => {
+  editModal.value?.setEditModalForm(user);
 };
 
 const deleteUser = async (user: User) => {

@@ -9,7 +9,7 @@ Route::prefix('component')->as('component.')->group(function () {
         return inertia('admin.component.alert.index');
     })->name('alert');
 
-    Route::get('button', function() {
+    Route::get('button', function () {
         return inertia('admin.component.button.index');
     })->name('button');
 

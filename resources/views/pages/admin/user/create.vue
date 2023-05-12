@@ -88,34 +88,39 @@
                       name="password_confirmation"
                       maxlength="50"
                       tabindex="6"
-                      :class="{ 'is-invalid': !!form.errors.password_confirmation }"
+                      :class="{
+                        'is-invalid': !!form.errors.password_confirmation,
+                      }"
                     />
-                    <ValidationFeedback :message="form.errors.password_confirmation" />
+                    <ValidationFeedback
+                      :message="form.errors.password_confirmation"
+                    />
                   </div>
+                </div>
+                <div class="col-12 text-right">
+                  <BKButton
+                    :color="form.isDirty ? 'danger' : 'secondary'"
+                    class="mr-3"
+                    :disabled="form.processing"
+                    tabindex="7"
+                    type="button"
+                    @click="resetForm"
+                  >
+                    Cancel
+                  </BKButton>
+                  <BKButton
+                    color="primary"
+                    :disabled="!form.isDirty"
+                    :loading="form.processing"
+                    loading-text="Saving..."
+                    tabindex="8"
+                    type="submit"
+                  >
+                    Create
+                  </BKButton>
                 </div>
               </div>
             </form>
-          </div>
-          <div class="card-footer text-right">
-            <BKButton
-              :color="form.isDirty ? 'danger' : 'secondary'"
-              class="mr-3"
-              :disabled="form.processing"
-              tabindex="7"
-              @click="form.reset()"
-            >
-              Cancel
-            </BKButton>
-            <BKButton
-              color="primary"
-              :disabled="!form.isDirty"
-              :loading="form.processing"
-              loading-text="Saving..."
-              tabindex="8"
-              @click="submit"
-            >
-              Create
-            </BKButton>
           </div>
         </div>
       </div>
@@ -124,13 +129,13 @@
 </template>
 
 <script setup lang="ts">
-import { BKButton, BKInput, useSweetAlert } from "@timedoor/baskito-ui";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
 import PageDescription from "@/views/components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@/views/components/admin/layout/Page/PageTitle.vue";
 import ValidationFeedback from "@/views/components/admin/ui/Form/ValidationFeedback.vue";
 import { Head, useForm } from "@inertiajs/vue3";
+import { BKButton, BKInput, useSweetAlert } from "@timedoor/baskito-ui";
 
 const form = useForm({
   first_name: "",
@@ -151,6 +156,11 @@ const submit = () => {
       successAlert({ title: "User created successfully!" });
     },
   });
+};
+
+const resetForm = () => {
+  form.reset();
+  form.clearErrors();
 };
 </script>
 

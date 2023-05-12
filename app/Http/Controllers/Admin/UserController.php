@@ -72,6 +72,10 @@ class UserController extends Controller
         $user->account()->associate(auth_user()?->account);
         $user->saveOrFail();
 
+        if ($request->has('reload')) {
+            return back();
+        }
+
         return to_route('admin.user.edit', ['user' => $user->id]);
     }
 

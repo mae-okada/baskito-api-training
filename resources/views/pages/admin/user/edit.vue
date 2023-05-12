@@ -97,29 +97,30 @@
                     />
                   </div>
                 </div>
+                <div class="col-12 text-right">
+                  <BKButton
+                    :color="form.isDirty ? 'danger' : 'secondary'"
+                    class="mr-3"
+                    :disabled="form.processing"
+                    tabindex="7"
+                    type="button"
+                    @click="resetForm"
+                  >
+                    Cancel
+                  </BKButton>
+                  <BKButton
+                    color="primary"
+                    :disabled="!form.isDirty"
+                    :loading="form.processing"
+                    loading-text="Saving..."
+                    tabindex="8"
+                    type="submit"
+                  >
+                    Save Changes
+                  </BKButton>
+                </div>
               </div>
             </form>
-          </div>
-          <div class="card-footer text-right">
-            <BKButton
-              :color="form.isDirty ? 'danger' : 'secondary'"
-              class="mr-3"
-              :disabled="form.processing"
-              tabindex="7"
-              @click="form.reset()"
-            >
-              Cancel
-            </BKButton>
-            <BKButton
-              color="primary"
-              :disabled="!form.isDirty"
-              :loading="form.processing"
-              loading-text="Saving..."
-              tabindex="8"
-              @click="submit"
-            >
-              Save Changes
-            </BKButton>
           </div>
         </div>
       </div>
@@ -128,23 +129,14 @@
 </template>
 
 <script setup lang="ts">
-import { BKButton, BKInput, useSweetAlert } from "@timedoor/baskito-ui";
+import { User } from "@/scripts/types/admin/user";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
 import PageDescription from "@/views/components/admin/layout/Page/PageDescription.vue";
 import PageSection from "@/views/components/admin/layout/Page/PageSection.vue";
 import PageTitle from "@/views/components/admin/layout/Page/PageTitle.vue";
 import ValidationFeedback from "@/views/components/admin/ui/Form/ValidationFeedback.vue";
 import { Head, useForm } from "@inertiajs/vue3";
-
-type User = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  name: string;
-  email: string;
-  owner: boolean;
-  created_at: string;
-};
+import { BKButton, BKInput, useSweetAlert } from "@timedoor/baskito-ui";
 
 const props = defineProps<{
   user: User;
@@ -172,6 +164,11 @@ const submit = () => {
       successAlert({ title: "User updated successfully!" });
     },
   });
+};
+
+const resetForm = () => {
+  form.reset();
+  form.clearErrors();
 };
 </script>
 
