@@ -17,7 +17,7 @@
                     class="form-control"
                   />
                   <div class="input-group-btn">
-                    <BKButton type="submit" variant="primary">
+                    <BKButton type="submit" color="primary">
                       <i class="fas fa-search"></i>
                     </BKButton>
                   </div>
@@ -26,7 +26,7 @@
             </div>
             <BKLinkButton
               class="ml-2"
-              variant="primary"
+              color="primary"
               :href="$route('admin.user.create')"
             >
               Add New User
@@ -67,11 +67,11 @@
                   <td class="buttons">
                     <BKLinkButton
                       :href="$route('admin.user.edit', user.id)"
-                      variant="warning"
+                      color="warning"
                     >
                       Edit
                     </BKLinkButton>
-                    <BKButton variant="danger" @click="deleteUser(user)">
+                    <BKButton color="danger" @click="deleteUser(user)">
                       Delete
                     </BKButton>
                   </td>

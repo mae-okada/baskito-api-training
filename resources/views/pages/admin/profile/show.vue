@@ -60,7 +60,7 @@
           </div>
           <div class="card-footer text-right">
             <BKButton
-              :variant="form.isDirty ? 'danger' : 'secondary'"
+              :color="form.isDirty ? 'danger' : 'secondary'"
               class="mr-3"
               :disabled="form.processing"
               @click="form.reset()"
@@ -68,7 +68,7 @@
               Cancel
             </BKButton>
             <BKButton
-              variant="primary"
+              color="primary"
               :disabled="!form.isDirty"
               :loading="form.processing"
               loading-text="Saving..."
