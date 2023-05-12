@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.2",
-        "@timedoor/baskito-ui": "^0.1.6",
+        "@timedoor/baskito-ui": "^0.1.16",
         "@vueuse/core": "^9.12.0",
         "@vueuse/integrations": "^9.12.0",
         "axios": "^1.2.1",

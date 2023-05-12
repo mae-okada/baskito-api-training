@@ -7,6 +7,7 @@ import { resolvePageComponent } from "vite-plugin-laravel/inertia";
 import { createApp, h } from "vue";
 import { Config } from "ziggy-js";
 import Baskito from "@timedoor/baskito-ui";
+import { router } from '@inertiajs/vue3'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -17,7 +18,7 @@ createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue, Ziggy as Config)
-      .use(Baskito)
+      .use(Baskito, { router })
       .mount(el)
   },
 })

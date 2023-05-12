@@ -14,17 +14,17 @@
           <div class="card-body">
             <BKButton
               class="mr-2"
-              variant="primary"
+              color="primary"
               @click="defaultAlert"
             >
               Default
             </BKButton>
-            <BKButton class="mr-2" variant="success" @click="success">
+            <BKButton class="mr-2" color="success" @click="success">
               Success
             </BKButton>
-            <BKButton class="mr-2" variant="warning" @click="warning">Warning</BKButton>
-            <BKButton class="mr-2" variant="danger" @click="error">Error</BKButton>
-            <BKButton class="mr-2" variant="info" @click="info">Info</BKButton>
+            <BKButton class="mr-2" color="warning" @click="warning">Warning</BKButton>
+            <BKButton class="mr-2" color="danger" @click="error">Error</BKButton>
+            <BKButton class="mr-2" color="info" @click="info">Info</BKButton>
           </div>
         </div>
       </div>
