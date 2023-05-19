@@ -8,6 +8,7 @@
         "typecheck": "vue-tsc --skipLibCheck --noEmit"
     },
     "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^5.0.0",
         "@types/bootstrap": "^5.2.6",
         "@types/jquery": "^3.5.14",
         "@types/jquery.nicescroll": "^3.7.2",
