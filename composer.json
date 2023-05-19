@@ -10,6 +10,7 @@
         "hammerstone/fast-paginate": "^0.1.12",
         "inertiajs/inertia-laravel": "^0.6.4",
         "innocenzi/laravel-vite": "0.2.*",
+        "jeremykenedy/laravel-roles": "^10.0",
         "laravel/framework": "^9.47",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
