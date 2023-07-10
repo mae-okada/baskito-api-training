@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const purgecss = require('@fullhuman/postcss-purgecss')
+
+// comment this snippet to disable purgecss
+const purgecss = require("@fullhuman/postcss-purgecss");
 
 module.exports = {
   plugins: [
