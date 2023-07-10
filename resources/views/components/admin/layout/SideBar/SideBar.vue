@@ -94,6 +94,12 @@
             Input
           </SideBarLink>
           <SideBarLink
+            :href="$route('admin.component.card')"
+            :active="routeIs('admin.component.card')"
+          >
+            Card
+          </SideBarLink> 
+          <SideBarLink
             :href="$route('admin.component.badge')"
             :active="routeIs('admin.component.badge')"
           >

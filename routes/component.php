@@ -37,6 +37,10 @@ Route::prefix('component')->as('component.')->group(function () {
         return inertia('admin.component.sweet-alert.index');
     })->name('sweet-alert');
 
+    Route::get('card', function () {
+        return inertia('admin.component.card.index');
+    })->name('card');
+  
     Route::get('badge', function () {
         return inertia('admin.component.badge.index');
     })->name('badge');
