@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Concerns\ExceptionFormatter;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,6 +11,8 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ExceptionFormatter;
+
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -25,7 +28,9 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport = [
-        //
+        \jeremykenedy\LaravelRoles\App\Exceptions\RoleDeniedException::class,
+        \jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException::class,
+        \jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException::class,
     ];
 
     /**

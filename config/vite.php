@@ -59,8 +59,8 @@ return [
     'commands' => [
         'artisan' => [
             'vite:tsconfig',
-            'ziggy:generate' => ['resources/scripts/utils/ziggy/index.ts'],
-            // 'role-js:generate' => ['resources/scripts/utils/role'], // uncomment to automatic generate role & permission data
+            'ziggy:generate'   => ['resources/scripts/utils/ziggy/index.ts'],
+            'role-js:generate' => ['resources/scripts/utils/role'],
             // 'typescript:generate'
         ],
         'shell' => [

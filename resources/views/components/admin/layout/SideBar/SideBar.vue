@@ -20,6 +20,7 @@
           Dashboard
         </SideBarLink>
         <SideBarLink
+          v-if="hasPermission('view.users')"
           icon="fas fa-users"
           :href="$route('admin.user.index')"
           :active="routeIs('admin.user.*') && !routeIs('admin.user.modal.*')"
@@ -27,6 +28,7 @@
           Manage Users
         </SideBarLink>
         <SideBarLink
+          v-if="hasPermission('view.users')"
           icon="fas fa-users"
           :href="$route('admin.user.modal.index')"
           :active="routeIs('admin.user.modal.*')"
@@ -117,10 +119,12 @@ import initStisla from "@/scripts/utils/stisla";
 import SideBarLink from "./SideBarLink.vue";
 import SideBarHeader from "./SideBarHeader.vue";
 import SideBarDropdown from "./SideBarDropdown.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
 import { useRoute } from "@/scripts/utils/ziggy/useRoute";
+import { useRole } from "@/scripts/utils/role";
 
 const { routeIs } = useRoute();
+const { hasPermission } = useRole(usePage().props.auth?.user);
 
 onMounted(() => {
   nextTick(() => {

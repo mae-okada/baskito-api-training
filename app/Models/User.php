@@ -15,6 +15,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property-read string $name user full name
+ *
+ * @method \Illuminate\Database\Eloquent\Collection<int, \jeremykenedy\LaravelRoles\Models\Role> getRoles()
  */
 /**
  * @method \Illuminate\Database\Eloquent\Collection<int, \jeremykenedy\LaravelRoles\Models\Role> getRoles()

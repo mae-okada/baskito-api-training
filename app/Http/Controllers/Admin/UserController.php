@@ -18,6 +18,12 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view.users')->only('index', 'edit');
+        $this->middleware('permission:edit.users')->except('index', 'edit');
+    }
+
     public function index(Request $request): Response
     {
         $user  = auth_user();

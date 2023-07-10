@@ -1,21 +1,21 @@
-// import { RoleType } from "@/scripts/utils/role"; // uncomment this line to use RoleType
+import { RoleType } from "@/scripts/utils/role";
 
 declare module "@inertiajs/core" {
   interface PageProps {
-    flash: FlashMessage,
-    auth?: AuthProps,
+    flash: FlashMessage;
+    auth?: AuthProps;
   }
 }
 
 export type FlashMessage = {
-  message: null | string,
-}
+  message: null | string;
+};
 
-export type AuthProps = {
+export interface AuthProps {
   user: {
-    id: number,
-    name: string,
-    email: string,
-    // role: RoleType,
-  },
+    id: number;
+    name: string;
+    email: string;
+    role: RoleType;
+  };
 }

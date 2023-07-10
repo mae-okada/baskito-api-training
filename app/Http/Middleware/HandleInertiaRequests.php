@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -43,21 +44,17 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'message' => fn () => $request->session()->get('message'),
             ],
-            'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'email')
-                : null,
-            // use this if you want to add role to auth.user
-            // 'auth.user' => function () {
-            //     $user = auth()->user();
+            'auth.user' => function () {
+                $user = auth()->user();
 
-            //     if (! $user instanceof User) {
-            //         return null;
-            //     }
+                if (!$user instanceof User) {
+                    return null;
+                }
 
-            //     return $user->only('id', 'name', 'email') + [
-            //         'role' => $user->getRoles()->first()?->getAttribute('slug'),
-            //     ];
-            // },
+                return $user->only('id', 'name', 'email') + [
+                    'role' => $user->getRoles()->first()?->getAttribute('slug'),
+                ];
+            },
         ]);
     }
 }
