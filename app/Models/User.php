@@ -16,6 +16,9 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @property-read string $name user full name
  */
+/**
+ * @method \Illuminate\Database\Eloquent\Collection<int, \jeremykenedy\LaravelRoles\Models\Role> getRoles()
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoleAndPermission;
@@ -92,7 +95,7 @@ class User extends Authenticatable
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                if (! is_array($attributes)) {
+                if (!is_array($attributes)) {
                     return '';
                 }
 

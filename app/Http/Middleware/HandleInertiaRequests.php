@@ -46,6 +46,18 @@ class HandleInertiaRequests extends Middleware
             'auth.user' => fn () => $request->user()
                 ? $request->user()->only('id', 'name', 'email')
                 : null,
+            // use this if you want to add role to auth.user
+            // 'auth.user' => function () {
+            //     $user = auth()->user();
+
+            //     if (! $user instanceof User) {
+            //         return null;
+            //     }
+
+            //     return $user->only('id', 'name', 'email') + [
+            //         'role' => $user->getRoles()->first()?->getAttribute('slug'),
+            //     ];
+            // },
         ]);
     }
 }
