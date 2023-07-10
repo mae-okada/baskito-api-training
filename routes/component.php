@@ -36,4 +36,8 @@ Route::prefix('component')->as('component.')->group(function () {
     Route::get('sweet-alert', function () {
         return inertia('admin.component.sweet-alert.index');
     })->name('sweet-alert');
+
+    Route::get('badge', function () {
+        return inertia('admin.component.badge.index');
+    })->name('badge');
 });
