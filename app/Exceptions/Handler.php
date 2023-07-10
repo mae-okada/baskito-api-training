@@ -127,4 +127,20 @@ class Handler extends ExceptionHandler
             $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException ||
             $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException;
     }
+
+    /**
+     * List of url path that use custom Exception Format. You can use Regex in the list
+     *
+     * @return array<string>
+     *
+     * @example return [
+     *  'api/v[1-9]+/.*'
+     * ];
+     */
+    protected function urlPathPattern()
+    {
+        return [
+            'api/v[1-9]+/.*',
+        ];
+    }
 }
