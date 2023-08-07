@@ -1,4 +1,4 @@
-# Baskito
+# Baskito - API Trainig (By Mae)
 
 ## About Baskito
 
