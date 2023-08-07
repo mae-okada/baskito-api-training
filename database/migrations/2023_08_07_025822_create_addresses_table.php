@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('address', 150);
+            $table->string('title', 50);
+            $table->string('street', 200);
+            $table->string('postal_code', 10);
             $table->timestamps();
             $table->softDeletes();
         });
