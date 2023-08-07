@@ -45,7 +45,12 @@
         },
         "files": [
             "app/Supports/helpers.php"
-        ]
+        ],
+        "autoload": {
+            "classmap": [
+                "database/seeders"
+            ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

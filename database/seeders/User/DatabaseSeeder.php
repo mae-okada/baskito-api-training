@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             ConnectRelationshipsSeeder::class,
             UsersTableSeeder::class,
+            AddressSeeder::class,
         ]);
 
         Model::reguard(); // Enable mass assignment
