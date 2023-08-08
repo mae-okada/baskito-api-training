@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
  * filter based on street
  */
 
-Route::post('register', [v1Controller::class, 'registerUser'])->name('user.register');
+Route::post('register', [AuthController::class, 'register'])->name('user.register');
 
 /**
  * sudah login:
