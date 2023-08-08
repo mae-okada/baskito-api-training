@@ -33,7 +33,6 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'full_name',
         'email',
         'password',
         'owner',
@@ -58,13 +57,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'owner'             => 'boolean',
     ];
-
-    protected static function booted()
-    {
-        static::saving(function (User $user) {
-            $user->full_name = $user->name;
-        });
-    }
 
     /**
      * Account relationship
