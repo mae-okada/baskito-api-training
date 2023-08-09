@@ -38,10 +38,9 @@ class AuthController extends Controller
             $accessToken = $user->createToken('authToken')->accessToken;
 
             return response()->json([
-                'access_token' => $accessToken,
-                'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60,
-                'user' => $user,
+                'access_token'  => $accessToken,
+                'token_type'    => 'bearer',
+                'user'          => $user,
             ]);
         }
 
