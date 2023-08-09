@@ -25,16 +25,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name'                  => 'required|max:50',
-            'email'                 => 'required|email:rfc,dns',
-            'password'              => 'required|min:6',
-            'password_confirmation' => 'required_with:password|same:password|min:6',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'email.email'           => 'Please input a valid email.',
+            'email'                 => 'required|email:rfc,dns|unique:users',
+            'password'              => 'required|confirmed|min:6',
         ];
     }
 }
