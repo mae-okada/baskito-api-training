@@ -17,14 +17,16 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $data = $request->validated();
-        $name = explode(' ', $data['name']);
+        $request->validated();
+        $name = explode(' ', $request['name'], 2);
 
-        User::create([
+        $user = User::create([
             'first_name'    => $name['0'],
             'last_name'     => $name['1'],
-            'email'         => $data['email'],
-            'password'      => $data['password'],
+            'email'         => $request['email'],
+            'password'      => $request['password'],
         ]);
+
+        return response()->json($user);
     }
 }
