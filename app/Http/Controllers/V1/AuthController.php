@@ -17,17 +17,14 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        // dd($request);
-
-        // pakai validasi foarm request
-        // pakai validated()
         $data = $request->validated();
-        dd($data);
-        $user = User::create($data);
+        $name = explode(' ', $data['name']);
 
-        // tidak perlu pakai return data (sesuai dengan contoh)
-        return response()->json($user);
-
-        // nanti ganti nama folder sama router nya jadi V1 (huruf kapital)
+        User::create([
+            'first_name'    => $name['0'],
+            'last_name'     => $name['1'],
+            'email'         => $data['email'],
+            'password'      => $data['password'],
+        ]);
     }
 }
