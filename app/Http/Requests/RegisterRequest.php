@@ -29,11 +29,4 @@ class RegisterRequest extends FormRequest
             'password'              => 'required|confirmed|min:6',
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'email.email'           => 'Please input a valid email.',
-        ];
-    }
 }
