@@ -97,4 +97,10 @@ class User extends Authenticatable
             },
         );
     }
+
+    // Connect user table with addresses table
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
 }
