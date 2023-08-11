@@ -18,16 +18,17 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $request->validated();
-        $name = explode(' ', $request['name'], 2);
+        // $request->validated();
+        // $name = explode(' ', $request['name'], 2);
 
-        $user = User::create([
-            'first_name'    => $name['0'],
-            'last_name'     => $name['1'],
-            'email'         => $request['email'],
-            'password'      => $request['password'],
-        ]);
+        // $user = User::create([
+        //     'first_name'    => $name['0'],
+        //     'last_name'     => $name['1'],
+        //     'email'         => $request['email'],
+        //     'password'      => $request['password'],
+        // ]);
 
+        $user = User::create($request->validated);
         return response()->json($user);
     }
 
@@ -37,12 +38,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $accessToken = $user->createToken('authToken')->accessToken;
+            $accessToken = $user->createToken('authToken');
 
+            // nnt ganti json resource buat return, hanya ambil plain text token
             return response()->json([
-                'access_token'  => $accessToken,
-                'token_type'    => 'bearer',
-                'user'          => $user,
+                'token' => $accessToken->plainTextToken,
             ]);
         }
 

@@ -95,6 +95,12 @@ class User extends Authenticatable
 
                 return trim("{$attributes['first_name']} {$attributes['last_name']}");
             },
+            set: function ($value, $attributes) {
+                $name = explode(' ', $value, 2);
+
+                $attributes['first_name']   = $name[0];
+                $attributes['last_name']    = $name[1];
+            }
         );
     }
 

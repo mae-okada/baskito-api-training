@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\V1\UserResource;
 use App\Models\User;
 
 class UserController extends Controller
@@ -16,7 +17,6 @@ class UserController extends Controller
     public function getUsersWithAddresses()
     {
         $usersWithAddresses = User::with('addresses')->get();
-        dd($usersWithAddresses);
-        return
+        return UserResource::collection($usersWithAddresses);
     }
 }
