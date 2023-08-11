@@ -99,8 +99,8 @@ class User extends Authenticatable
             set: function ($value, $attributes) {
                 $name = explode(' ', $value, 2);
 
-                $attributes['first_name']   = $name[0];
-                $attributes['last_name']    = $name[1];
+                $attributes['first_name']   = $name[0] ?? '';
+                $attributes['last_name']    = $name[1] ?? '';
             }
         );
     }

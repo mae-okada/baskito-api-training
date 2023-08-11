@@ -27,5 +27,9 @@ Route::get('users/search', [UserController::class, 'search'])->name('user.search
  * Update User
  * Delete User
  * Detail User
- *
  */
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('update', [UserController::class, 'update'])->name('user.update');
+    Route::delete('delete', [UserController::class, 'delete'])->name('user.delete');
+});
