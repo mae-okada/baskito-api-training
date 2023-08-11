@@ -16,7 +16,21 @@ class UserController extends Controller
      */
     public function index()
     {
+        $query = '123 Main Street';
         $usersWithAddresses = User::with('addresses')->paginate(10);
-        return UserResource::collection($usersWithAddresses)->whereIn('id', [1]);
+        return UserResource::collection($usersWithAddresses);
+    }
+
+    public function search()
+    {
+        $query = '123 Main Street';
+
+        $usersWithAddresses = User::whereHas('addresses', function ($addressQuery) use ($query) {
+            $addressQuery->where('street', 'like', '%' . $query . '%'); 
+        })->with(['addresses' => function ($addressQuery) use ($query) {
+            $addressQuery->where('street', 'like', '%' . $query . '%'); 
+        }])->get();
+
+        return UserResource::collection($usersWithAddresses);
     }
 }

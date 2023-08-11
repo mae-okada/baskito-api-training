@@ -20,6 +20,7 @@ Route::post('register', [AuthController::class, 'register'])->name('user.registe
 Route::post('login', [AuthController::class, 'login'])->name('user.login');
 
 Route::get('users', [UserController::class, 'index'])->name('user.list');
+Route::get('users/search', [UserController::class, 'search'])->name('user.search');
 
 /**
  * sudah login:
