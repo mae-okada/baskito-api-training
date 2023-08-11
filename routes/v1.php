@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\AuthController;
+use App\Http\Controllers\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::post('register', [AuthController::class, 'register'])->name('user.register');
+Route::post('login', [AuthController::class, 'login'])->name('user.login');
+
+Route::get('users', [UserController::class, 'index'])->name('user.list');
 
 /**
  * sudah login:
