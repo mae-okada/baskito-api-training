@@ -14,9 +14,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getUsersWithAddresses()
+    public function index()
     {
-        $usersWithAddresses = User::with('addresses')->get();
-        return UserResource::collection($usersWithAddresses);
+        $usersWithAddresses = User::with('addresses')->paginate(10);
+        return UserResource::collection($usersWithAddresses)->whereIn('id', [1]);
     }
 }

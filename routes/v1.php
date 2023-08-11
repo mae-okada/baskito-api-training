@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [AuthController::class, 'register'])->name('user.register');
 Route::post('login', [AuthController::class, 'login'])->name('user.login');
 
-Route::get('user-address-list', [UserController::class, 'getUsersWithAddresses'])->name('user.list');
+Route::get('users', [UserController::class, 'index'])->name('user.list');
 
 /**
  * sudah login:
