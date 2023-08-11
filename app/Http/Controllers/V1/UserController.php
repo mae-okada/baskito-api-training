@@ -21,14 +21,15 @@ class UserController extends Controller
         return UserResource::collection($usersWithAddresses);
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        $query = '123 Main Street';
+        // $query = '123 Main Street';
+        $query = $request->input('query');
 
         $usersWithAddresses = User::whereHas('addresses', function ($addressQuery) use ($query) {
-            $addressQuery->where('street', 'like', '%' . $query . '%'); 
+            $addressQuery->where('street', 'like', '%' . $query . '%');
         })->with(['addresses' => function ($addressQuery) use ($query) {
-            $addressQuery->where('street', 'like', '%' . $query . '%'); 
+            $addressQuery->where('street', 'like', '%' . $query . '%');
         }])->get();
 
         return UserResource::collection($usersWithAddresses);
