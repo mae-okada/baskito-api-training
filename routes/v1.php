@@ -31,5 +31,6 @@ Route::get('users/search', [UserController::class, 'search'])->name('user.search
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('update', [UserController::class, 'update'])->name('user.update');
-    Route::delete('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+    Route::delete('delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('detail', [UserController::class, 'userDetail'])->name('user.detail');
 });
