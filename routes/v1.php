@@ -29,7 +29,7 @@ Route::get('users/search', [UserController::class, 'search'])->name('user.search
  * Detail User
  */
 
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('update', [UserController::class, 'update'])->name('user.update');
-    Route::delete('delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::delete('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 });

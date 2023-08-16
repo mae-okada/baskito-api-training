@@ -39,7 +39,6 @@ class AuthController extends Controller
             $user = Auth::user();
             $accessToken = $user->createToken('authToken');
 
-            // nnt ganti json resource buat return, hanya ambil plain text token
             return response()->json([
                 'token' => $accessToken->plainTextToken,
             ]);

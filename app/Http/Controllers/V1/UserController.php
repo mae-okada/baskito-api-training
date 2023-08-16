@@ -41,21 +41,27 @@ class UserController extends Controller
     public function update(LoginRequest $request)
     {
         $user = Auth::user();
-        $user->update($request->validate());
+        $user->update($request->validated());
 
         return response()->json($user);
     }
 
-    public function delete(User $user)
+    public function delete($id)
     {
         DB::beginTransaction();
-
+        //
+        $user = User::find($id);
+        // dd($user);
         try {
-            $user->delete();
+            $deleted = $user->delete();
 
-            DB::commit();
-
-            return response()->json(["Delete user success"]);
+            if ($deleted) {
+                DB::commit();
+                return response()->json(["message" => "User deleted successfully"]);
+            } else {
+                DB::rollBack();
+                return response()->json(["message" => "User deletion failed"]);
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
 
