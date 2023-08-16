@@ -33,7 +33,7 @@ class UserController extends Controller
             $addressQuery->where('street', 'like', '%' . $query . '%');
         })->with(['addresses' => function ($addressQuery) use ($query) {
             $addressQuery->where('street', 'like', '%' . $query . '%');
-        }])->get();
+        }])->paginate(10);
         return UserResource::collection($usersWithAddresses);
     }
 
@@ -45,10 +45,12 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
         DB::beginTransaction();
-        $user = Auth::user();
+        // $user = Auth::user();
+        $user = $request->user();
+        // dd($user->loadMissing('addresses'));
         try {
             $deleted = $user->delete();
 
@@ -70,8 +72,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $userWithAddresses = User::with('addresses')->where('id', $user->id)->get();
-            return UserResource::collection($userWithAddresses);
+            $userWithAddresses = User::with('addresses')->where('id', $user->id)->first();
+            return new UserResource($userWithAddresses);
         } else {
             return response()->json(["message" => "User not found"], 404);
         }
