@@ -49,7 +49,6 @@ class UserController extends Controller
     public function delete($id)
     {
         DB::beginTransaction();
-        //
         $user = User::find($id);
         // dd($user);
         try {
