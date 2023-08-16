@@ -20,11 +20,16 @@ Route::post('register', [AuthController::class, 'register'])->name('user.registe
 Route::post('login', [AuthController::class, 'login'])->name('user.login');
 
 Route::get('users', [UserController::class, 'index'])->name('user.list');
+Route::get('users/search', [UserController::class, 'search'])->name('user.search');
 
 /**
  * sudah login:
  * Update User
  * Delete User
  * Detail User
- *
  */
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('update', [UserController::class, 'update'])->name('user.update');
+    Route::delete('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+});

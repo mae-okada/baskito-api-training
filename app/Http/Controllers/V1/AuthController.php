@@ -18,17 +18,16 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        // $request->validated();
-        // $name = explode(' ', $request['name'], 2);
+        $request->validated();
+        $name = explode(' ', $request['name'], 2);
 
-        // $user = User::create([
-        //     'first_name'    => $name['0'],
-        //     'last_name'     => $name['1'],
-        //     'email'         => $request['email'],
-        //     'password'      => $request['password'],
-        // ]);
-
-        $user = User::create($request->validated);
+        $user = User::create([
+            'first_name'    => $name['0'],
+            'last_name'     => $name['1'],
+            'email'         => $request['email'],
+            'password'      => $request['password'],
+        ]);
+        // $user = User::create($request->validated());
         return response()->json($user);
     }
 
@@ -40,7 +39,6 @@ class AuthController extends Controller
             $user = Auth::user();
             $accessToken = $user->createToken('authToken');
 
-            // nnt ganti json resource buat return, hanya ambil plain text token
             return response()->json([
                 'token' => $accessToken->plainTextToken,
             ]);
