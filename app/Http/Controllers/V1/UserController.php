@@ -18,24 +18,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usersWithAddresses = User::with('addresses')->paginate(10);
-        return UserResource::collection($usersWithAddresses);
-    }
-
-    public function search(Request $request)
-    {
-        // $query = '123 Main Street';
         $query = $request->input('query');
 
-        $usersWithAddresses = User::whereHas('addresses', function ($addressQuery) use ($query) {
-            $addressQuery->where('street', 'like', '%' . $query . '%');
-        })->with(['addresses' => function ($addressQuery) use ($query) {
-            $addressQuery->where('street', 'like', '%' . $query . '%');
-        }])->paginate(10);
+        $usersWithAddresses = User::when($query, function ($queryBuilder) use ($query) {
+            $queryBuilder->whereHas('addresses', function ($addressQuery) use ($query) {
+                $addressQuery->where('street', 'like', '%' . $query . '%');
+            });
+        })->with('addresses')->paginate(10);
+
         return UserResource::collection($usersWithAddresses);
     }
+
 
     public function update(LoginRequest $request)
     {
