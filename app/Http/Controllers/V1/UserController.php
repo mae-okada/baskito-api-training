@@ -43,19 +43,12 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         DB::beginTransaction();
-        // $user = Auth::user();
         $user = $request->user();
         // dd($user->loadMissing('addresses'));
         try {
-            $deleted = $user->delete();
-
-            if ($deleted) {
-                DB::commit();
-                return response()->json(["message" => "User deleted successfully"]);
-            } else {
-                DB::rollBack();
-                return response()->json(["message" => "User deletion failed"]);
-            }
+            $user->delete();
+            DB::commit();
+            return response()->json(["message" => "User deleted successfully"]);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->throw();
