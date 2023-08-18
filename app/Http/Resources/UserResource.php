@@ -30,7 +30,7 @@ class UserResource extends JsonResource
             'first_name' => $user->first_name,
             'last_name'  => $user->last_name,
             'email'      => $user->email,
-            'owner'      => $user->owner,
+            // 'owner'      => $user->owner,
             'created_at' => $user->created_at,
         ];
     }

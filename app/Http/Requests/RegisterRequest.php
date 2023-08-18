@@ -29,4 +29,15 @@ class RegisterRequest extends FormRequest
             'password'              => 'required|confirmed|min:6',
         ];
     }
+
+    public function validated($key = null, $default = null)
+    {
+        $validatedData = parent::validated();
+
+        $nameParts = explode(' ', $validatedData['name'], 2);
+        $validatedData['first_name'] = $nameParts[0] ?? '';
+        $validatedData['last_name'] = $nameParts[1] ?? '';
+
+        return $validatedData;
+    }
 }

@@ -86,24 +86,24 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute<string, never>
      */
-    protected function name(): Attribute
-    {
-        return Attribute::make(
-            get: function ($value, $attributes) {
-                if (!is_array($attributes)) {
-                    return '';
-                }
+    // protected function name(): Attribute
+    // {
+    //     return Attribute::make(
+    //         // get: function ($value, $attributes) {
+    //         //     if (!is_array($attributes)) {
+    //         //         return '';
+    //         //     }
 
-                return trim("{$attributes['first_name']} {$attributes['last_name']}");
-            },
-            set: function ($value, $attributes) {
-                $name = explode(' ', $value, 2);
+    //         //     return trim("{$attributes['first_name']} {$attributes['last_name']}");
+    //         // },
+    //         set: function ($value, $attributes) {
+    //             $name = explode(' ', $value, 2);
 
-                $attributes['first_name']   = $name[0] ?? '';
-                $attributes['last_name']    = $name[1] ?? '';
-            }
-        );
-    }
+    //             $attributes['first_name']   = $name[0] ?? '';
+    //             $attributes['last_name']    = $name[1] ?? '';
+    //         }
+    //     );
+    // }
 
     // Connect user table with addresses table
     public function addresses()
