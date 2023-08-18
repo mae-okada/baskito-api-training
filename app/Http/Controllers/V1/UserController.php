@@ -63,7 +63,6 @@ class UserController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollBack();
-
             return response()->throw();
         }
     }
