@@ -64,7 +64,7 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
 
-            return response()->json(["Delete user failed"]);
+            return response()->throw();
         }
     }
 
